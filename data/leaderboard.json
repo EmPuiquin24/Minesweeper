@@ -1,8 +1,0 @@
-[
-  { "name": "JugadorA", "difficulty": "Fácil", "turns": 15 },
-  { "name": "JugadorB", "difficulty": "Fácil", "turns": 18 },
-  { "name": "JugadorC", "difficulty": "Intermedio", "turns": 25 },
-  { "name": "JugadorD", "difficulty": "Intermedio", "turns": 30 },
-  { "name": "JugadorE", "difficulty": "Difícil", "turns": 40 }
-]
-

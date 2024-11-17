@@ -1,0 +1,5 @@
+JugadorA Fácil 15
+JugadorB Fácil 18
+JugadorC Intermedio 25
+JugadorD Intermedio 30
+JugadorE Difícil 40

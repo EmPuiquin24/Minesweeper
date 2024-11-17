@@ -1,20 +1,19 @@
 #ifndef LEADERBOARD_H
 #define LEADERBOARD_H
 
-#include <nlohmann/json.hpp> // This is a external library. sudo pacman -S nlohmann-json
-using json = nlohmann::json;
+#include "Player.h"
+
+#include <string>
+#include <vector>
 
 class Leaderboard {
-
 private:
-
-
-
+	std::string filename;
+	std::vector<Player> player;
 public:
-	void save();
-	void load();
-	void add();
-
+	Leaderboard(std::string filename);
+	void addPlayer(Player& player);
+	void displayLeaderboard();
 };
 
 #endif
