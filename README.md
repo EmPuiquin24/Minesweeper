@@ -5,7 +5,7 @@ Feel free to contribute to this repository.
 
 _This program was created as part of Programming II course. You can read the original description of the proyect in the PDF file._
 
-## Installation
+## Build 
 You can use your own way to compile the program. These instructions work for Linux distributions and use the CMakeLists.txt. 
 
 1. Clone this repo
