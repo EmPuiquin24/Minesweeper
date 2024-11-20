@@ -33,7 +33,29 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
 4. Once a cell is revelead, the number on a cell without a mine indicates the number of mines adjacent.
 5. You automatically lose if you reveal a cell with a mine.
 
-## Contributors
-<a href="https://github.com/EmPuiquin24/Minesweeper/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=EmPuiquin24/Minesweeper" />
-</a>
+## Authors
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/EmPuiquin24">
+        <img src="https://github.com/EmPuiquin24.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
+        <br />
+        <sub><b>Author Name</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/CJimenez-C">
+        <img src="https://github.com/CJimenez-C.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
+        <br />
+        <sub><b>Author Name</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/andrxeaa">
+        <img src="https://github.com/andrxeaa.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
+        <br />
+        <sub><b>Author Name</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
