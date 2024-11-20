@@ -38,17 +38,17 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
   <tr>
     <td align="center">
       <a href="https://github.com/EmPuiquin24">
-        <img src="https://github.com/EmPuiquin24.png" width="100" height="100" style="border-radius: 50%; margin:10px;" alt="EmPuiquin24"/>
+        <img src="https://github.com/EmPuiquin24.png?s=100" width="100" height="100" style="border-radius: 50%; margin:10px;" alt="EmPuiquin24"/>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/CJimenez-C">
-        <img src="https://github.com/CJimenez-C.png" width="100" height="100" style="border-radius: 50%; margin: 10px;" alt="CJimenez-C"/>
+        <img src="https://github.com/CJimenez-C.png?s=100" width="100" height="100" style="border-radius: 50%; margin: 10px;" alt="CJimenez-C"/>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/andrxeaa">
-        <img src="https://github.com/andrxeaa.png" width="100" height="100" style="border-radius: 50%; margin: 10px" alt="andrxeaa"/>
+        <img src="https://github.com/andrxeaa.png?s=100" width="100" height="100" style="border-radius: 50%; margin: 10px" alt="andrxeaa"/>
       </a>
     </td>
   </tr>
