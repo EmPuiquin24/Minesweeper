@@ -38,23 +38,23 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
   <tr>
     <td align="center">
       <a href="https://github.com/EmPuiquin24">
-        <img src="https://github.com/EmPuiquin24.png" width="100px;" style="border-radius: 50%;" alt="EmPuiquin24"/>
+        <img src="https://github.com/EmPuiquin24.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
         <br />
-        <sub><b>Author Name</b></sub>
+        <sub><b>EmPuiquin24</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/CJimenez-C">
-        <img src="https://github.com/CJimenez-C.png" width="100px;" style="border-radius: 50%;" alt="CJimenez-C"/>
+        <img src="https://github.com/CJimenez-C.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
         <br />
-        <sub><b>Author Name</b></sub>
+        <sub><b>CJimenez-C</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/andrxeaa">
-        <img src="https://github.com/andrxeaa.png" width="100px;" style="border-radius: 50%;" alt="andrxeaa"/>
+        <img src="https://github.com/andrxeaa.png" width="100px;" style="border-radius: 50%;" alt="Author Name"/>
         <br />
-        <sub><b>Author Name</b></sub>
+        <sub><b>andrxeaa</b></sub>
       </a>
     </td>
   </tr>
