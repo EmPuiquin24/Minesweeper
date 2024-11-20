@@ -136,3 +136,4 @@ void Leaderboard::displayLeaderboard() {
     }
 }
 
+Leaderboard::~Leaderboard() {}

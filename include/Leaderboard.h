@@ -12,6 +12,7 @@ public:
 	Leaderboard(std::string filename);
 	void addPlayer(Player& player);
 	void displayLeaderboard();
+	~Leaderboard();
 };
 
 #endif

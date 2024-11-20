@@ -34,5 +34,6 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
 5. You automatically lose if you reveal a cell with a mine.
 
 ## Contributors
-Necesito hacer el repositorio público para poner esto :'v (Será al final)
-
+<a href="https://github.com/EmPuiquin24/Minesweeper/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=EmPuiquin24/Minesweeper" />
+</a>

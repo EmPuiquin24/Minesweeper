@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "Game.h"
 
 class Player {
 private:
