@@ -57,5 +57,13 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
         <sub><b>andrxeaa</b></sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/RodrigoDLP">
+        <img src="https://github.com/RodrigoDLP.png" width="100" height="100" style="border-radius: 50%; margin: 10px;" alt="RodrigoDLP"/>
+        <br />
+        <sub><b>CJimenez-C</b></sub>
+      </a>
+    </td>
+
   </tr>
 </table>
