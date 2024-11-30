@@ -36,7 +36,7 @@ public:
 	void decreaseUnCells();
 	int getUnCells();
 
-	void revealCell(int row, int column, bool& gameOver);
+	void revealCell(int row, int column);
 	void flagCell(int row, int column, int& totalflags);
 	int getFlags();	
 

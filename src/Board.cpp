@@ -96,7 +96,7 @@ int Board::getUnCells() {
     return mUnCells;
 }
 
-void Board::revealCell(int row, int column, bool& victory) {
+void Board::revealCell(int row, int column) {
 
     Cell& cell = MainBoard[row][column];
 
@@ -104,16 +104,12 @@ void Board::revealCell(int row, int column, bool& victory) {
 
         cell.reveal();
 
-        if (cell.hasMine()) {
-            victory = true;
-            return;
-        }
-        // Esto revela todas las casillas adjacentes
+       // Esto revela todas las casillas adjacentes
         if (cell.getAdjacentMines() == 0) { // Recurvisidad :money_mouth:
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if (i != 0 || j != 0) {
-                    revealCell(row + i, column + j, victory); // Esto no debería fallar porque solo se ejecuta si la casilla es 0
+                    revealCell(row + i, column + j); // Esto no debería fallar porque solo se ejecuta si la casilla es 0
                         // Y si una casilla es 0, siempre se garantiza que sus adjacentes no sean minas.
                     }
                 }

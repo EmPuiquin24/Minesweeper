@@ -97,9 +97,9 @@ void Game::OneRound() {
         increaseTurns();
     }
     else if(mov == 'D') {
-        mBoard.revealCell(row, column, mVictory);
+        mBoard.revealCell(row, column);
 
-        if(!mVictory && mGameOver) {
+        if(cell.hasMine()) {
             setGameOver();
             std::cout << "¡Has descubierto una mina!" << std::endl;
             std::cout << "Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
@@ -112,16 +112,18 @@ void Game::OneRound() {
             if(mBoard.getUnCells() == mBoard.getMines()) {
 
                 setGameOver();
+                setVictory();
+
                 std::cout << "¡Felicidades! ¡Has descubierto todas las celdas sin mina!" << std::endl;
                 std::cout << "Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
                 mBoard.printBoard(mVictory, mGameOver); 
-                increaseTurns(); 
             }
             else {
                 std::cout << "Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
                 mBoard.printBoard(mVictory, mGameOver);
-                increaseTurns(); 
             }
+
+            increaseTurns();
         }
     }
 
