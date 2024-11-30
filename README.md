@@ -61,7 +61,7 @@ The gameplay is pretty simple. These are the instructions and restricctions of t
       <a href="https://github.com/RodrigoDLP">
         <img src="https://github.com/RodrigoDLP.png" width="100" height="100" style="border-radius: 50%; margin: 10px;" alt="RodrigoDLP"/>
         <br />
-        <sub><b>CJimenez-C</b></sub>
+        <sub><b>RodrigoDLP</b></sub>
       </a>
     </td>
 
