@@ -7,15 +7,17 @@
 
 class Player {
 private:
-	std::string name;
-	std::string difficulty;
-	int moves;
+	std::string mName;
+	std::string mDifficulty;
+	int mMoves;
 public:
 	Player(std::string name, std::string difficulty, int moves);	
+
 	std::string getName();
 	std::string getDifficulty();
 	int getMoves() const;
-	~Player();
+
+~Player();
 };
 
 #endif

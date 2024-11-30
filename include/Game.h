@@ -2,17 +2,30 @@
 #define GAME_H 
 
 #include <string>
+#include "Board.h"
 
 class Game {
-protected:
-	std::string status; // active, lose, neutral
-	std::string difficulty;	 // fácil, intermedio, difícil
+private:
+	Board mBoard;
+	int mTurns;
+	bool mVictory;
+	bool mGameOver; // false si está activo y true cuando pierde o no se esté ejecutando el juego
 public:
-	Game();
+	Game(std::string difficulty);
+	
+	void setVictory();
+	void setGameOver();
+	
+	bool hasWon();
+	bool hasEnd();
+	
+	void increaseTurns();
+	int getTurns();
+
 	void StartGame();
-	std::string getStatus();
-	std::string getDifficulty();
-	~Game();
+	void OneRound();
+
+~Game();
 };
 
 #endif

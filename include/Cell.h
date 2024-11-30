@@ -5,22 +5,31 @@
 
 class Cell {
 private:
-	bool hasMine;
-	bool isRevelead;
-	bool hasFlag;
-	int row;
-	int column;
-	int adjacentMines;
+	int mRow;
+	int mColumn;
+	bool mIsMine;
+	bool mIsRevelead;
+	bool mIsFlag;
+	int mAdjacentMines;
 public:
 	Cell(int row, int column);
+	
+	int getRow();
+	int getColumn();
+
 	void placeMine();
-	void placeFlag();
-	void removeFlag();
-	bool isMine();
-	bool isFlagged();
+	bool hasMine();
+	
+	void toggleFlag();
+	bool hasFlag();
+		
 	void reveal();
+	bool isRevelead();
+
+	void setAdjacentMines(int nMines);
 	int getAdjacentMines();
-	~Cell();
+
+~Cell();
 };
 
 #endif

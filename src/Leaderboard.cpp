@@ -15,11 +15,11 @@ void InsertPlayer(std::vector<Player>& lista, const Player& player) {
     lista.insert(it, player);
 }
 
-Leaderboard::Leaderboard(std::string file) : filename(file) {}
+Leaderboard::Leaderboard(std::string file) : mFilename(file) {}
 
 void Leaderboard::addPlayer(Player &player) {
     // Abrir archivo en modo lectura
-    std::ifstream inputFile(filename);
+    std::ifstream inputFile(mFilename);
     if (!inputFile.is_open()) {
         std::cerr << "Error al abrir el archivo para lectura." << std::endl;
         return;
@@ -55,7 +55,7 @@ void Leaderboard::addPlayer(Player &player) {
         InsertPlayer(PuntajesDificil, player);
     }
 
-    std::ofstream outputFile(filename, std::ios::trunc);
+    std::ofstream outputFile(mFilename, std::ios::trunc);
     if (!outputFile.is_open()) {
         std::cerr << "Error al abrir el archivo para escritura." << std::endl;
         return;
@@ -81,7 +81,7 @@ void Leaderboard::displayLeaderboard() {
 	std::cout << "Tabla de mejores jugadores:" << std::endl;
 	
         std::string line;
-	std::ifstream file(filename);
+	std::ifstream file(mFilename);
 	
         std::vector<Player> jugadoresFacil;
 	std::vector<Player> jugadoresIntermedio;
