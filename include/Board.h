@@ -36,8 +36,10 @@ public:
 	int getUnCells();
 
 	void revealCell(int row, int column);
-	void flagCell(int row, int column, int& totalflags);
-	int getFlags();	
+	void flagCell(int row, int columns);
+	
+	void setFlags();
+	int getFlags();
 
 	void printBoard(bool victory, bool gameOver);
 ~Board();	

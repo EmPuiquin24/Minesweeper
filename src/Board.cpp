@@ -20,7 +20,7 @@ Board::Board(std::string difficulty) {
         mTotalMines = rand() % 6 + 15;
     }
     mUnCells = mRows * mColumns - mTotalMines;
-    mTotalFlags = 0;
+    mTotalFlags = mTotalMines;
 }
 
 int Board::getRows() {
@@ -121,16 +121,16 @@ int Board::getMines() {
 }
 
 
-void Board::flagCell(int row, int column, int& totalflags) {
+void Board::flagCell(int row, int column) {
     Cell& cell = MainBoard[row][column];
 
     if (!cell.isRevelead()) {
         cell.toggleFlag();
         if (cell.hasFlag()) {
-            totalflags++;
+            mTotalFlags--;
         }
         else {
-            totalflags--;
+            mTotalFlags++;
         }
     }
 }
@@ -140,7 +140,22 @@ int Board::getFlags() {
 }
 
 void Board::printBoard(bool victory, bool gameOver) {
+    // Para hacerlo bonito
+    std::cout << "   "; 
+    for (int col = 0; col < mColumns; col++) {
+        std::cout << col << " "; 
+    }
+    std::cout << std::endl;
+
+    std::cout << "   ";
+    for (int col = 0; col < mColumns; col++) {
+        std::cout << "--";
+    }
+    std::cout << std::endl;
+
+    // Imprimir filas con números a la izquierda
     for (int i = 0; i < mRows; i++) {
+        std::cout << i << " | "; // Separador de fila
         for (int j = 0; j < mColumns; j++) {
             Cell& cell = MainBoard[i][j];
 
@@ -148,7 +163,7 @@ void Board::printBoard(bool victory, bool gameOver) {
                 if (victory) {
                     std::cout << "F "; // F al ganar
                 } else {
-                    std::cout << "X "; // X al perder 
+                    std::cout << "X "; // X al perder
                 }
             } else if (!cell.isRevelead()) {
                 if (cell.hasFlag()) {
@@ -157,7 +172,7 @@ void Board::printBoard(bool victory, bool gameOver) {
                     std::cout << "- "; // Celda no revelada
                 }
             } else {
-                 std::cout << cell.getAdjacentMines() << " "; // Número de minas adyacentes
+                std::cout << cell.getAdjacentMines() << " "; // Número de minas adyacentes
             }
         }
         std::cout << std::endl;
