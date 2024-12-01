@@ -20,10 +20,6 @@ Leaderboard::Leaderboard(std::string file) : mFilename(file) {}
 void Leaderboard::addPlayer(Player &player) {
     // Abrir archivo en modo lectura
     std::ifstream inputFile(mFilename);
-    if (!inputFile.is_open()) {
-        std::cerr << "Error al abrir el archivo para lectura." << std::endl;
-        return;
-    }
 
     std::string playerName, difficulty;
     int turns;
@@ -88,6 +84,11 @@ void Leaderboard::displayLeaderboard() {
         std::string line;
 	std::ifstream file(mFilename);
 	
+        if (!file.is_open()) {
+        std::cerr << "¡Error! No hay nada que mostrar" << std::endl;
+        return;
+    }
+
         std::vector<Player> easyPlayers;
 	std::vector<Player> mediumPlayers;
 	std::vector<Player> hardPlayers;
