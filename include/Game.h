@@ -21,6 +21,8 @@ public:
 	
 	void increaseTurns();
 	int getTurns();
+	
+	void showInfo();
 
 	void StartGame();
 	void OneRound();

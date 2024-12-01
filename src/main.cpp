@@ -73,6 +73,18 @@ int main() {
         while (!game.hasEnd()) {
             game.OneRound();
         }
+        if (game.hasWon()) {
+            string name;
+            cout << "Para ser añadido al salón de la fama, ingresa tu nombre: " << endl;
+            cin >> name;
+            int turns = game.getTurns();
+            Player jugador(name, difficulty, turns);
+            Leaderboard leaderboard("../data/leaderboard.txt");
+            leaderboard.addPlayer(jugador);
+            cout << "¡Has sido añadido correctamente al salón de la fama!" << endl;
+            cout << "Regresa pronto :)" << endl;
+            leaderboard.displayLeaderboard();
+        }
     }
     return 0;
 }
