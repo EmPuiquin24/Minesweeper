@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-#include "../include/Board.h"
-#include "../include/Cell.h"
 #include "../include/Game.h"
 #include "../include/Leaderboard.h"
 #include "../include/Player.h"
@@ -13,15 +11,24 @@ int main() {
     // Semilla
     srand(time(nullptr));
 
-    cout << "--------------------------------" << std::endl;
-    cout << "| ¡Bienvenido/a al Buscaminas! |" << std::endl;
-    cout << "--------------------------------" << std::endl;
+    // Título en arte Ascii super necesario
+    cout << R"(
+___  ________ _   _  _____ _____  _    _ _____ ___________ ___________ 
+|  \/  |_   _| \ | ||  ___/  ___|| |  | |  ___|  ___| ___ \  ___| ___ \
+| .  . | | | |  \| || |__ \ `--. | |  | | |__ | |__ | |_/ / |__ | |_/ /
+| |\/| | | | | . ` ||  __| `--. \| |/\| |  __||  __||  __/|  __||    / 
+| |  | |_| |_| |\  || |___/\__/ /\  /\  / |___| |___| |   | |___| |\ \ 
+\_|  |_/\___/\_| \_/\____/\____/  \/  \/\____/\____/\_|   \____/\_| \_|
+)" << endl;
+    cout << "--------------------------------" << endl;
+    cout << "| ¡Bienvenido/a al Buscaminas! |" << endl;
+    cout << "--------------------------------" << endl;
 
     // Control de selecciones
-    cout << "Seleccione una opción: (Escribe el número de la opción)" << std::endl;
-    cout << "1. Jugar" << std::endl;
-    cout << "2. Mejores Jugadores" << std::endl;
-    cout << "3. Salir" << std::endl;
+    cout << "Seleccione una opción: (Escribe el número de la opción)" << endl;
+    cout << "1. Jugar" << endl;
+    cout << "2. Mejores Jugadores" << endl;
+    cout << "3. Salir" << endl;
 
     int seleccion = 0;
     cout << "Ingresa la opción: ";
@@ -33,8 +40,8 @@ int main() {
 
     if (seleccion == 3) {
         cout << "--------------------------------" << endl;
-        cout << "Consola: ¿Tan rápido :( ?" << endl;
-        cout << "Consola: Vuelve Pronto" << endl;
+        cout << "¿Tan rápido :( ?" << endl;
+        cout << "Vuelve Pronto" << endl;
         cout << "--------------------------------" << endl;
     }
     else if (seleccion == 2) {
@@ -74,14 +81,16 @@ int main() {
             game.OneRound();
         }
         if (game.hasWon()) {
-            string name;
-            cout << "Para ser añadido al salón de la fama, ingresa tu nombre: " << endl;
-            cin >> name;
+            string playerName;
             int turns = game.getTurns();
-            Player jugador(name, difficulty, turns);
+
+            cout << "Ingresa tu nombre para ser añadido al salón de la fama: ";
+            cin >> playerName;
+
+            Player jugador(playerName, difficulty, turns);
             Leaderboard leaderboard("../data/leaderboard.txt");
             leaderboard.addPlayer(jugador);
-            cout << "¡Has sido añadido correctamente al salón de la fama!" << endl;
+
             cout << "Regresa pronto :)" << endl;
             leaderboard.displayLeaderboard();
         }

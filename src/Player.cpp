@@ -1,19 +1,21 @@
 #include "../include/Player.h"
 
-Player::Player(std::string name, std::string difficulty, int moves) : 
-    mName(name), mDifficulty(difficulty), mMoves(moves) {}
+Player::Player(std::string playerName, std::string difficulty, int turns) : 
+    mPlayerName(playerName), mDifficulty(difficulty), mTurns(turns) {}
+
 
 std::string Player::getName() { 
-    return mName; 
+    return mPlayerName; 
 }
 
 std::string Player::getDifficulty() {
     return mDifficulty;
 }
 
-int Player::getMoves() const { 
-    return mMoves;
+int Player::getTurns() const { 
+    return mTurns;
 }
+
 
 Player::~Player() {}
 

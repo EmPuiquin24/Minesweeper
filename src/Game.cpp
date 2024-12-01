@@ -29,12 +29,13 @@ int Game::getTurns() {
 }
 
 void Game::showInfo() {
-    std::cout << "#Info - Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << " | Turnos:" << mTurns  << std::endl;
+    std::cout << "#Info - Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << " | Turnos: " << mTurns  << std::endl;
+    std::cout << std::endl;
 }
 
 void Game::StartGame() {
     std::cout << "--------------------------------" << std::endl;
-    std::cout << "¡El juego ha comenzado!" << std::endl;
+    std::cout << "¡El juego ha comenzado!\n" << std::endl;
     mBoard.GenerateBoard();
     mBoard.printBoard(mVictory, mGameOver);
 }
@@ -62,7 +63,7 @@ void Game::OneRound() {
         std::cin >> column;
     }
 
-    std::cout << "Ingrese la acción: 'D' para descubrir la celda y 'F' para marcarla con una bandera: ";
+    std::cout << "Ingrese la acción: 'D' para descubrir la celda o 'F' para marcarla con una bandera: ";
     std::cin >> mov;
     while (mov != 'D' && mov != 'F') {
         std::cout << "La acción no es válida, intentalo denuevo: ";
@@ -74,7 +75,7 @@ void Game::OneRound() {
     if( mov == 'F') {
         if (cell.isRevelead()) {
             std::cout << "Error: La celda está revelada, no se puede colocar una bandera." << std::endl;
-            std::cout << "\n--------------------------------" << std::endl;
+            std::cout << "--------------------------------" << std::endl;
             showInfo();
             mBoard.printBoard(mVictory, mGameOver);
         }
@@ -95,7 +96,6 @@ void Game::OneRound() {
             std::cout << "Error: Esta celda ya está descubierta" << std::endl;
         }
         else {
-            std::cout << "\n--------------------------------" << std::endl;
             if (mBoard.getUnCells() == mBoard.getRows() * mBoard.getColumns()) {
                 mBoard.placeMines(cell);
                 mBoard.calculateAdjacentMines();
@@ -105,12 +105,12 @@ void Game::OneRound() {
             if(cell.hasMine()) {
                 setGameOver();
 
-                std::cout << "\n----------------------------" << std::endl;
-                std::cout << "| Has descubierto una mina :( |" << std::endl;
-                std::cout << "-------------------------------" << std::endl;
-                showInfo();
+                std::cout << "-----------------------------------" << std::endl;
+                std::cout << "¡Oh,no! Has descubierto una mina D:" << std::endl;
 
-            mBoard.printBoard(mVictory, mGameOver);
+                showInfo();
+                mBoard.printBoard(mVictory, mGameOver);
+                std::cout << std::endl;
             }
             else {
                 increaseTurns();
@@ -119,13 +119,14 @@ void Game::OneRound() {
                     setGameOver();
                     setVictory();
 
-                    std::cout << "\n-----------------------------------------------------------" << std::endl;
-                    std::cout << "|¡Felicidades! ¡Has descubierto todas las celdas sin mina!|" << std::endl;
-                    std::cout << "-----------------------------------------------------------" << std::endl;
+                    std::cout << "--------------------------------------------------------" << std::endl;
+                    std::cout << "¡Felicidades, has descubierto todas las celdas sin minas!" << std::endl;
                     showInfo();
                     mBoard.printBoard(mVictory, mGameOver); 
+                    std::cout << std::endl;
                 }
                 else {
+                    std::cout << "--------------------------------" << std::endl;
                     showInfo();
                     mBoard.printBoard(mVictory, mGameOver);
                 }

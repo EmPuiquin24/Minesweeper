@@ -8,7 +8,7 @@ void InsertPlayer(std::vector<Player>& lista, const Player& player) {
 
     auto it = std::lower_bound(lista.begin(), lista.end(), player, 
         [](const Player& a, const Player& b) {
-            return a.getMoves() < b.getMoves();
+            return a.getTurns() < b.getTurns();
         }
     );
 
@@ -25,34 +25,36 @@ void Leaderboard::addPlayer(Player &player) {
         return;
     }
 
-    std::string nombre, dificultad;
-    int movimientos;
+    std::string playerName, difficulty;
+    int turns;
 
-    std::vector<Player> PuntajesFacil;
-    std::vector<Player> PuntajesIntermedio;
-    std::vector<Player> PuntajesDificil;
+    std::vector<Player> easyScores;
+    std::vector<Player> mediumScores;
+    std::vector<Player> hardScores;
 
-    while (inputFile >> nombre >> dificultad >> movimientos) {
-        Player jugador(nombre, dificultad, movimientos);
-        if (dificultad == "Fácil") {
-            PuntajesFacil.push_back(jugador);
-        } else if (dificultad == "Intermedio") {
-            PuntajesIntermedio.push_back(jugador);
-        } else if (dificultad == "Difícil") {
-            PuntajesDificil.push_back(jugador);
+    while (inputFile >> playerName >> difficulty >> turns) {
+        Player currentPlayer(playerName, difficulty, turns);
+        if (difficulty == "Fácil") {
+            easyScores.push_back(currentPlayer);
+        } else if (difficulty == "Intermedio") {
+            easyScores.push_back(currentPlayer);
+        } else if (difficulty == "Difícil") {
+            easyScores.push_back(currentPlayer);
         }
     }
 
     inputFile.close(); // Cerrar archivo de entrada
 
     // Insertar el nuevo jugador en la lista correspondiente
-    dificultad = player.getDifficulty();
-    if (dificultad == "Fácil") {
-        InsertPlayer(PuntajesFacil, player);
-    } else if (dificultad == "Intermedio") {
-        InsertPlayer(PuntajesIntermedio, player);
-    } else if (dificultad == "Difícil") {
-        InsertPlayer(PuntajesDificil, player);
+    difficulty = player.getDifficulty();
+    if (difficulty == "Fácil") {
+        InsertPlayer(easyScores, player);
+    }
+    else if (difficulty == "Intermedio") {
+        InsertPlayer(mediumScores, player);
+    }
+    else if (difficulty == "Difícil") {
+        InsertPlayer(hardScores, player);
     }
 
     std::ofstream outputFile(mFilename, std::ios::trunc);
@@ -62,74 +64,77 @@ void Leaderboard::addPlayer(Player &player) {
     }
 
     // Escribir los datos en el archivo en orden
-    for (Player& p : PuntajesFacil) {
-        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getMoves() << std::endl;
+    for (Player& p : easyScores) {
+        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getTurns() << std::endl;
     }
-    for (Player& p : PuntajesIntermedio) {
-        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getMoves() << std::endl;
+    for (Player& p : mediumScores) {
+        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getTurns() << std::endl;
     }
-    for (Player& p : PuntajesDificil) {
-        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getMoves() << std::endl;
+    for (Player& p : hardScores) {
+        outputFile << p.getName() << " " << p.getDifficulty() << " " << p.getTurns() << std::endl;
     }
 
     outputFile.close();
     std::cout << "¡Has sido añadido al salón de la fama!" << std::endl;
 }
 
+
 void Leaderboard::displayLeaderboard() {
 
-	std::cout << "Tabla de mejores jugadores:" << std::endl;
-	
+        std::cout << "------------------------------" << std::endl;
+	std::cout << "| Tabla de mejores jugadores |" << std::endl;
+        std::cout << "------------------------------" << std::endl;	
+
         std::string line;
 	std::ifstream file(mFilename);
 	
-        std::vector<Player> jugadoresFacil;
-	std::vector<Player> jugadoresIntermedio;
-	std::vector<Player> jugadoresDificil;
+        std::vector<Player> easyPlayers;
+	std::vector<Player> mediumPlayers;
+	std::vector<Player> hardPlayers;
 
-	std::string nombre, dificultad;
-	int movimientos;
+	std::string playerName, difficulty;
+	int turns;
 	
-	while (file >> nombre >> dificultad >> movimientos) {
+	while (file >> playerName >> difficulty >> turns) {
 
-	    Player jugador(nombre, dificultad, movimientos);
+	    Player jugador(playerName, difficulty, turns);
 
-            if (dificultad == "Fácil") {
-                jugadoresFacil.push_back(jugador);
-            } else if (dificultad == "Intermedio") {
-                jugadoresIntermedio.push_back(jugador);
-            } else if (dificultad == "Difícil") {
-                jugadoresDificil.push_back(jugador);
+            if (difficulty == "Fácil") {
+                easyPlayers.push_back(jugador);
+            } else if (difficulty== "Intermedio") {
+                mediumPlayers.push_back(jugador);
+            } else if (difficulty == "Difícil") {
+                hardPlayers.push_back(jugador);
             }
         }
 
 	file.close();
 
-	if (!jugadoresFacil.empty()) {
+	if (!easyPlayers.empty()) {
         int i = 1;
         std::cout << "Fácil:\n";
-        for (auto& jugador : jugadoresFacil) {
-		std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getMoves() << " turnos" << std::endl;
+        for (auto& jugador : easyPlayers) {
+		std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getTurns() << " turnos" << std::endl;
         i++;	
         }
         std::cout << std::endl; 
     }
 
-    if (!jugadoresIntermedio.empty()) {
+    if (!mediumPlayers.empty()) {
         int i = 1;
         std::cout << "Intermedio:\n";
-        for (auto& jugador : jugadoresIntermedio) {
-		std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getMoves() << " turnos" << std::endl;
+        for (auto& jugador : mediumPlayers) {
+		std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getTurns() << " turnos" << std::endl;
 	i++;	
         }
         std::cout << std::endl;
     }
 
-    if (!jugadoresDificil.empty()) {
+    if (!hardPlayers.empty()) {
         int i = 1;
         std::cout << "Difícil:\n";
-        for (auto& jugador : jugadoresDificil) {
-            std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getMoves() << " turnos" << std::endl;
+        for (auto& jugador : hardPlayers) {
+            std::cout << i << "." << jugador.Player::getName() << " - " << jugador.Player::getTurns() << " turnos" << std::endl;
         i++; 
         }
         std::cout << std::endl;

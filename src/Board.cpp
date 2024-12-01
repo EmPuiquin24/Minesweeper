@@ -142,7 +142,7 @@ int Board::getFlags() {
 
 void Board::printBoard(bool victory, bool gameOver) {
     // Para hacerlo bonito
-    std::cout << "   "; 
+    std::cout << "    "; 
     for (int col = 0; col < mColumns; col++) {
         std::cout << col << " "; 
     }
@@ -160,8 +160,7 @@ void Board::printBoard(bool victory, bool gameOver) {
         for (int j = 0; j < mColumns; j++) {
             Cell& cell = MainBoard[i][j];
 
-            if (gameOver && cell.hasMine()) {
-                if (victory) {
+            if (gameOver && cell.hasMine()) { if (victory) {
                     std::cout << "F "; // F al ganar
                 } else {
                     std::cout << "X "; // X al perder
