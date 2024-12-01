@@ -1,33 +1,32 @@
 #ifndef GAME_H
-#define GAME_H 
-
+#define GAME_H
 #include <string>
 #include "Board.h"
 
 class Game {
 private:
-	Board mBoard;
-	int mTurns;
-	bool mVictory;
-	bool mGameOver;
+    Board mBoard;
+    int mTurns;
+    bool mVictory;
+    bool mGameOver;
 public:
-	Game(std::string difficulty);
-	
-	void setVictory();
-	void setGameOver();
-	
-	bool hasWon();
-	bool hasEnd();
-	
-	void increaseTurns();
-	int getTurns();
-	
-	void showInfo();
+    Game(std::string difficulty);
 
-	void StartGame();
-	void OneRound();
+    void setVictory();
+    void setGameOver();
 
-~Game();
+    bool hasWon();
+    bool hasEnd();
+
+    void increaseTurns();
+    int getTurns();
+
+    void showInfo();
+
+    void StartGame();
+    void OneRound();
+
+    ~Game();
 };
 
-#endif
+#endif //GAME_H

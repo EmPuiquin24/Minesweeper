@@ -1,23 +1,23 @@
 #include <iostream>
 #include <string>
-
+#include <fstream>
+#include "../include/Board.h"
+#include "../include/Cell.h"
 #include "../include/Game.h"
 #include "../include/Leaderboard.h"
 #include "../include/Player.h"
-
 using namespace std;
 
 int main() {
     // Semilla
     srand(time(nullptr));
-
     // Título en arte Ascii super necesario
     cout << R"(
-___  ________ _   _  _____ _____  _    _ _____ ___________ ___________ 
+___  ________ _   _  _____ _____  _    _ _____ ___________ ___________
 |  \/  |_   _| \ | ||  ___/  ___|| |  | |  ___|  ___| ___ \  ___| ___ \
 | .  . | | | |  \| || |__ \ `--. | |  | | |__ | |__ | |_/ / |__ | |_/ /
-| |\/| | | | | . ` ||  __| `--. \| |/\| |  __||  __||  __/|  __||    / 
-| |  | |_| |_| |\  || |___/\__/ /\  /\  / |___| |___| |   | |___| |\ \ 
+| |\/| | | | | . ` ||  __| `--. \| |/\| |  __||  __||  __/|  __||    /
+| |  | |_| |_| |\  || |___/\__/ /\  /\  / |___| |___| |   | |___| |\ \
 \_|  |_/\___/\_| \_/\____/\____/  \/  \/\____/\____/\_|   \____/\_| \_|
 )" << endl;
     cout << "--------------------------------" << endl;
@@ -25,7 +25,7 @@ ___  ________ _   _  _____ _____  _    _ _____ ___________ ___________
     cout << "--------------------------------" << endl;
 
     // Control de selecciones
-    cout << "Seleccione una opción: (Escribe el número de la opción)" << endl;
+    cout << "Selecciona una opción: (Escribe el número de la opción)" << endl;
     cout << "1. Jugar" << endl;
     cout << "2. Mejores Jugadores" << endl;
     cout << "3. Salir" << endl;
@@ -34,7 +34,7 @@ ___  ________ _   _  _____ _____  _    _ _____ ___________ ___________
     cout << "Ingresa la opción: ";
     cin >> seleccion;
     while(seleccion > 3 || seleccion < 1) {
-        cout << "La opción seleccionada no es válida. Por favor, intentelo otra vez: ";
+        cout << "La opción seleccionada no es válida. Por favor, inténtelo otra vez: ";
         cin >> seleccion;
     }
 
@@ -45,7 +45,7 @@ ___  ________ _   _  _____ _____  _    _ _____ ___________ ___________
         cout << "--------------------------------" << endl;
     }
     else if (seleccion == 2) {
-        Leaderboard LeaderboardTxT("../data/leaderboard.txt");
+        Leaderboard LeaderboardTxT("../leaderboard.txt");
         cout << "--------------------------------" << endl;
         LeaderboardTxT.displayLeaderboard();
     }

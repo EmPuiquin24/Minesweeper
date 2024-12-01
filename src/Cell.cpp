@@ -1,7 +1,7 @@
 #include "../include/Cell.h"
 
-Cell::Cell(int row, int column) : 
-    mRow(row), mColumn(column), mIsMine(false), mIsRevelead(false), mIsFlag(false), mAdjacentMines(0) {
+Cell::Cell(int row, int column) :
+    mRow(row), mColumn(column), mIsMine(false), mIsRevealed(false), mIsFlag(false), mAdjacentMines(0) {
 }
 
 int Cell::getRow() {
@@ -30,11 +30,11 @@ bool Cell::hasFlag() {
 
 
 void Cell::reveal() {
-    mIsRevelead = true;
+    mIsRevealed = true;
 }
 
-bool Cell::isRevelead() {
-    return mIsRevelead;
+bool Cell::isRevealed() {
+    return mIsRevealed;
 }
 
 

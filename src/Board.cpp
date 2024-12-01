@@ -1,13 +1,13 @@
 #include "../include/Board.h"
-#include <iostream>
 
+#include <iostream>
 Board::Board(std::string difficulty) {
     mDifficulty = difficulty;
 
     if (difficulty == "Fácil") {
         mRows = 6;
         mColumns = 6;
-        mTotalMines =  rand() % 3 + 3; 
+        mTotalMines =  rand() % 3 + 3;
 
     } else if (difficulty == "Intermedio") {
         mRows = 8;
@@ -55,7 +55,7 @@ Cell& Board::getCell(int row, int column) {
 
 
 void Board::placeMines(Cell& cell) {
-    int i = 0; 
+    int i = 0;
     while (i < mTotalMines) {
         int rCellRow = rand() % mRows;
         int rCellColumn = rand() % mColumns;
@@ -72,8 +72,8 @@ void Board::placeMines(Cell& cell) {
 void Board::calculateAdjacentMines() { // Perdóname Dios por este bucle
     for (int i = 0; i < mRows; i++) {
         for (int j = 0; j < mColumns; j++) {
- 
-            int nMines = 0; 
+
+            int nMines = 0;
             Cell& cCell = MainBoard[i][j];
 
             if (!cCell.hasMine()) {
@@ -98,7 +98,7 @@ void Board::calculateAdjacentMines() { // Perdóname Dios por este bucle
 void Board::revealCell(int row, int column) {
     Cell& cell = MainBoard[row][column];
 
-    if (!cell.isRevelead()) {
+    if (!cell.isRevealed()) {
         cell.reveal();
         decreaseUnCells();
 
@@ -125,7 +125,7 @@ int Board::getMines() {
 void Board::flagCell(int row, int column) {
     Cell& cell = MainBoard[row][column];
 
-    if (!cell.isRevelead()) {
+    if (!cell.isRevealed()) {
         cell.toggleFlag();
         if (cell.hasFlag()) {
             mTotalFlags--;
@@ -142,9 +142,9 @@ int Board::getFlags() {
 
 void Board::printBoard(bool victory, bool gameOver) {
     // Para hacerlo bonito
-    std::cout << "    "; 
+    std::cout << "    ";
     for (int col = 0; col < mColumns; col++) {
-        std::cout << col << " "; 
+        std::cout << col << " ";
     }
     std::cout << std::endl;
 
@@ -165,7 +165,7 @@ void Board::printBoard(bool victory, bool gameOver) {
                 } else {
                     std::cout << "X "; // X al perder
                 }
-            } else if (!cell.isRevelead()) {
+            } else if (!cell.isRevealed()) {
                 if (cell.hasFlag()) {
                     std::cout << "F "; // Bandera
                 } else {

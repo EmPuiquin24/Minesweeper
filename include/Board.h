@@ -1,48 +1,48 @@
 #ifndef BOARD_H
-#define BOARD_H 
-
+#define BOARD_H
+// Esto debe contener informaciÃ³n de to_do el tablero: Cantidad de celdas, cantidad de minas.
 #include <string>
 #include <vector>
 #include "Cell.h"
 
 class Board {
 private:
-	std::string mDifficulty;
+    std::string mDifficulty;
 
-	int mRows;
-	int mColumns;
-	int mTotalMines;
-	int mUnCells;
-	int mTotalFlags;
+    int mRows;
+    int mColumns;
+    int mTotalMines;
+    int mUnCells;
+    int mTotalFlags;
 
-	std::vector<std::vector<Cell>> MainBoard;
+    std::vector<std::vector<Cell>> MainBoard;
 
 public:
-	Board(std::string difficulty);
-	
-	int getRows();
-	int getColumns();
+    Board(std::string difficulty);
 
-	void GenerateBoard();
+    int getRows();
+    int getColumns();
 
-	Cell& getCell(int row, int column);
+    void GenerateBoard();
 
-	void placeMines(Cell& cell);
-	void calculateAdjacentMines();
+    Cell& getCell(int row, int column);
 
-	int getMines();
-	
-	void decreaseUnCells();
-	int getUnCells();
+    void placeMines(Cell& cell);
+    void calculateAdjacentMines();
 
-	void revealCell(int row, int column);
-	void flagCell(int row, int columns);
-	
-	void setFlags();
-	int getFlags();
+    int getMines();
 
-	void printBoard(bool victory, bool gameOver);
-~Board();	
+    void decreaseUnCells();
+    int getUnCells();
+
+    void revealCell(int row, int column);
+    void flagCell(int row, int columns);
+
+    void setFlags();
+    int getFlags();
+
+    void printBoard(bool victory, bool gameOver);
+    ~Board();
 };
 
-#endif
+#endif //BOARD_H

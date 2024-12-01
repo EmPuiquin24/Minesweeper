@@ -45,35 +45,35 @@ void Game::OneRound() {
 
     int row, column;
     char mov;
-    
+
     std::cout << std::endl;
     std::cout << "Selecciona una celda:" << std::endl;
 
-    std::cout <<  "Ingresa la fila de la celda: "; 
+    std::cout <<  "Ingresa la fila de la celda: ";
     std::cin >> row;
     while (mBoard.getRows() < row || row < 0) {
-        std::cout << "La fila no se encuentra en un rango válido, intentalo denuevo: ";
+        std::cout << "La fila no se encuentra en un rango válido, inténtalo de nuevo: ";
         std::cin >> row;
     }
 
     std::cout << "Ingresa la columna de la celda: ";
     std::cin >> column;
     while (mBoard.getColumns() < row || row < 0) {
-        std::cout << "La columna no se encuentra en un rango válido, intentalo denuevo: ";
+        std::cout << "La columna no se encuentra en un rango válido, inténtalo de nuevo: ";
         std::cin >> column;
     }
 
     std::cout << "Ingrese la acción: 'D' para descubrir la celda o 'F' para marcarla con una bandera: ";
     std::cin >> mov;
     while (mov != 'D' && mov != 'F') {
-        std::cout << "La acción no es válida, intentalo denuevo: ";
+        std::cout << "La acción no es válida, inténtalo de nuevo: ";
         std::cin >> mov;
     }
 
     Cell& cell = mBoard.getCell(row, column);
 
     if( mov == 'F') {
-        if (cell.isRevelead()) {
+        if (cell.isRevealed()) {
             std::cout << "Error: La celda está revelada, no se puede colocar una bandera." << std::endl;
             std::cout << "--------------------------------" << std::endl;
             showInfo();
@@ -92,7 +92,7 @@ void Game::OneRound() {
         if (cell.hasFlag() ) {
             std::cout << "Error: Retira la bandera de esta casilla para poder descubrirla" << std::endl;
         }
-        else if (cell.isRevelead()) {
+        else if (cell.isRevealed()) {
             std::cout << "Error: Esta celda ya está descubierta" << std::endl;
         }
         else {
@@ -103,7 +103,6 @@ void Game::OneRound() {
             mBoard.revealCell(row, column);
 
             if(cell.hasMine()) {
-                increaseTurns();
                 setGameOver();
 
                 std::cout << "-----------------------------------" << std::endl;
@@ -123,7 +122,7 @@ void Game::OneRound() {
                     std::cout << "--------------------------------------------------------" << std::endl;
                     std::cout << "¡Felicidades, has descubierto todas las celdas sin minas!" << std::endl;
                     showInfo();
-                    mBoard.printBoard(mVictory, mGameOver); 
+                    mBoard.printBoard(mVictory, mGameOver);
                     std::cout << std::endl;
                 }
                 else {

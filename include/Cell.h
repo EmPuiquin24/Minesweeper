@@ -1,33 +1,33 @@
-#ifndef CELL_H 
+#ifndef CELL_H
 #define CELL_H
+// Esto debe contener todas las caracteristicas que puede tener una celda: Con mina, flageada, sin minas y minas adyacentes
 
 class Cell {
 private:
-	int mRow;
-	int mColumn;
-	bool mIsMine;
-	bool mIsRevelead;
-	bool mIsFlag;
-	int mAdjacentMines;
+    int mRow;
+    int mColumn;
+    bool mIsMine;
+    bool mIsRevealed;
+    bool mIsFlag;
+    int mAdjacentMines;
 public:
-	Cell(int row, int column);
+    Cell(int row, int column);
 
-	int getRow();
-	int getColumn();
+    int getRow();
+    int getColumn();
 
-	void placeMine();
-	bool hasMine();
+    void placeMine();
+    bool hasMine();
 
-	void toggleFlag();
-	bool hasFlag();
+    void toggleFlag();
+    bool hasFlag();
 
-	void reveal();
-	bool isRevelead();
+    void reveal();
+    bool isRevealed();
 
-	void setAdjacentMines(int nMines);
-	int getAdjacentMines();
+    void setAdjacentMines(int nMines);
+    int getAdjacentMines();
 
-~Cell();
+    ~Cell();
 };
-
-#endif
+#endif //CELL_H
