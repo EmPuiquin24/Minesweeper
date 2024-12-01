@@ -31,6 +31,13 @@ int Board::getColumns() {
     return mColumns;
 }
 
+void Board::decreaseUnCells() {
+    mUnCells--;
+}
+
+int Board::getUnCells() {
+    return mUnCells;
+}
 
 void Board::GenerateBoard() {
     MainBoard.resize(mRows, std::vector<Cell>(mColumns, Cell(0,0)));
@@ -88,35 +95,27 @@ void Board::calculateAdjacentMines() { // Perdóname Dios por este bucle
 }
 
 
-void Board::decreaseUnCells() {
-    mUnCells--;
-}
 
-int Board::getUnCells() {
-    return mUnCells;
-}
 
 void Board::revealCell(int row, int column) {
-
     Cell& cell = MainBoard[row][column];
 
     if (!cell.isRevelead() && !cell.hasFlag()) {
-
         cell.reveal();
 
-       // Esto revela todas las casillas adjacentes
-        if (cell.getAdjacentMines() == 0) { // Recurvisidad :money_mouth:
+        // Revelar celdas adyacentes si no hay minas alrededor
+        if (cell.getAdjacentMines() == 0) {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
-                    if (i != 0 || j != 0) {
-                    revealCell(row + i, column + j); // Esto no debería fallar porque solo se ejecuta si la casilla es 0
-                        // Y si una casilla es 0, siempre se garantiza que sus adjacentes no sean minas.
+                    if ((i != 0 || j != 0) && // No es la celda actual
+                        row + i >= 0 && row + i < mRows && // Verificar filas válidas
+                        column + j >= 0 && column + j < mColumns) { // Verificar columnas válidas
+                        revealCell(row + i, column + j);
                     }
                 }
             }
         }
     }
-
 }
 
 int Board::getMines() {

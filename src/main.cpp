@@ -13,7 +13,9 @@ int main() {
     // Semilla
     srand(time(nullptr));
 
-    cout << "¡Bienvenido/a al Buscaminas!" << std::endl;
+    cout << "--------------------------------" << std::endl;
+    cout << "| ¡Bienvenido/a al Buscaminas! |" << std::endl;
+    cout << "--------------------------------" << std::endl;
 
     cout << "Seleccione una opción: (Escribe el número de la opción)" << std::endl;
     cout << "1. Jugar" << std::endl;
@@ -22,31 +24,36 @@ int main() {
 
     // Control de selecciones
     int seleccion = 0;
+    cout << "Ingresa la opción: ";
     cin >> seleccion;
     while(seleccion > 3 || seleccion < 1) {
-        std::cout << "La opción seleccionada no es válida. Por favor, intentelo otra vez" << std::endl;
+        cout << "La opción seleccionada no es válida. Por favor, intentelo otra vez: ";
         cin >> seleccion;
     }
 
     if (seleccion == 3) {
-        cout << "¿Tan rápido :( ?" << endl;
-        cout << "Vuelve Pronto" << endl;
+        cout << "--------------------------------" << endl;
+        cout << "Consola: ¿Tan rápido :( ?" << endl;
+        cout << "Consola: Vuelve Pronto" << endl;
+        cout << "--------------------------------" << endl;
     }
-    if (seleccion == 2) {
+    else if (seleccion == 2) {
         Leaderboard LeaderboardTxT("../data/leaderboard.txt");
+        cout << "--------------------------------" << endl;
         LeaderboardTxT.displayLeaderboard();
     }
 
     else {
         int n = 0;
         string difficulty;
+        cout << "--------------------------------" << endl;
         cout << "¡Has elegido jugar! Selecciona la dificultad!" << endl;
         cout << "1. Fácil" << endl;
         cout << "2. Intermedio" << endl;
         cout << "3. Difícil" << endl;
-        cout << "Ingresa la opción: " << endl;
-
+        cout << "Ingresa la opción: ";
         cin >> n;
+
         while (n > 3 || n < 1) {
             cout << "El nivel de dificultad no existe. Vuelva a intentarlo: " << endl;
         }
@@ -62,9 +69,8 @@ int main() {
 
         Game game(difficulty);
 
+        game.StartGame();
         while (!game.hasEnd()) {
-
-            game.StartGame();
             game.OneRound();
         }
     }
