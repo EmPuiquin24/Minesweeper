@@ -77,14 +77,17 @@ void Game::OneRound() {
         increaseTurns();
     }
     else if(mov == 'D') {
-        if (cell.hasFlag()) {
+        if (cell.hasFlag() ) {
             std::cout << "Error: Retira la bandera de esta casilla para poder descubrirla" << std::endl;
+        }
+        else if (cell.isRevelead()) {
+            std::cout << "Error: Esta celda ya está descubierta" << std::endl;
         }
         else {
             std::cout << "\n--------------------------------" << std::endl;
             if (mBoard.getUnCells() + mBoard.getMines() == mBoard.getRows() * mBoard.getColumns()) {
-            mBoard.placeMines(cell);
-            mBoard.calculateAdjacentMines();
+                mBoard.placeMines(cell);
+                mBoard.calculateAdjacentMines();
             }
             mBoard.revealCell(row, column);
 
