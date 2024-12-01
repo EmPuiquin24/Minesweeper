@@ -9,7 +9,7 @@ private:
 	Board mBoard;
 	int mTurns;
 	bool mVictory;
-	bool mGameOver; // false si está activo y true cuando pierde o no se esté ejecutando el juego
+	bool mGameOver;
 public:
 	Game(std::string difficulty);
 	

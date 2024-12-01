@@ -95,8 +95,6 @@ void Board::calculateAdjacentMines() { // Perdóname Dios por este bucle
 }
 
 
-
-
 void Board::revealCell(int row, int column) {
     Cell& cell = MainBoard[row][column];
 
@@ -141,7 +139,6 @@ int Board::getFlags() {
     return mTotalFlags;
 }
 
-    // InGame
 void Board::printBoard(bool victory, bool gameOver) {
     for (int i = 0; i < mRows; i++) {
         for (int j = 0; j < mColumns; j++) {

@@ -2,28 +2,6 @@
 #include "../include/Cell.h"
 #include <iostream>
 
-/*
-class Game {
-private:
-	Board mBoard;
-	bool mWon;
-	bool mGameOver; // true si está activo y false cuando pierde o no se esté ejecutando el juego
-public:
-	Game(int rows, int columns, int mines);
-
-	void StartGame();
-	void OneRound();
-
-	bool hasWon();
-	bool hasLost();
-
-	std::string GetStatus();
-
-~Game();
-};
-
-*/
-
 Game::Game(std::string difficulty) : mBoard(difficulty), mTurns(0), mVictory(false), mGameOver(false) {}
 
 void Game::setVictory() {
@@ -71,7 +49,7 @@ void Game::OneRound() {
         std::cout << "La fila no se encuentra en un rango válido, intentalo denuevo: ";
         std::cin >> row;
     }
-    
+
     std::cout << "Ingresa la columna de la celda: ";
     std::cin >> column;
     while (mBoard.getColumns() < row || row < 0) {

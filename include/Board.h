@@ -1,7 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H 
 
-// Esto debe contener información de todo el tablero: Cantidad de celdas, cantidad de minas.
 #include <string>
 #include <vector>
 #include "Cell.h"
