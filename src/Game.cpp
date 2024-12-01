@@ -103,6 +103,7 @@ void Game::OneRound() {
             mBoard.revealCell(row, column);
 
             if(cell.hasMine()) {
+                increaseTurns();
                 setGameOver();
 
                 std::cout << "-----------------------------------" << std::endl;
