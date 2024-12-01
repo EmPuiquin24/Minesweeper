@@ -19,7 +19,7 @@ Board::Board(std::string difficulty) {
         mColumns = 10;
         mTotalMines = rand() % 6 + 15;
     }
-    mUnCells = mRows * mColumns - mTotalMines;
+    mUnCells = mRows * mColumns;
     mTotalFlags = mTotalMines;
 }
 
@@ -100,6 +100,7 @@ void Board::revealCell(int row, int column) {
 
     if (!cell.isRevelead()) {
         cell.reveal();
+        decreaseUnCells();
 
         // Revelar celdas adyacentes si no hay minas alrededor
         if (cell.getAdjacentMines() == 0) {

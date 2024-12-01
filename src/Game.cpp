@@ -68,13 +68,19 @@ void Game::OneRound() {
     Cell& cell = mBoard.getCell(row, column);
 
     if( mov == 'F') {
-
-        mBoard.flagCell(row,column);
-
-        std::cout << "\n--------------------------------" << std::endl;
-        std::cout << "#Info - Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
-        mBoard.printBoard(mVictory, mGameOver);
-        increaseTurns();
+        if (cell.isRevelead()) {
+            std::cout << "Error: La celda está revelada, no se puede colocar una bandera." << std::endl;
+            std::cout << "\n--------------------------------" << std::endl;
+            std::cout << "#Info - Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
+            mBoard.printBoard(mVictory, mGameOver);
+        }
+        else {
+            mBoard.flagCell(row,column);
+            std::cout << "\n--------------------------------" << std::endl;
+            std::cout << "#Info - Minas: " << mBoard.getMines() << " | Banderas: " << mBoard.getFlags() << std::endl;
+            mBoard.printBoard(mVictory, mGameOver);
+            increaseTurns();
+        }
     }
     else if(mov == 'D') {
         if (cell.hasFlag() ) {
@@ -85,7 +91,7 @@ void Game::OneRound() {
         }
         else {
             std::cout << "\n--------------------------------" << std::endl;
-            if (mBoard.getUnCells() + mBoard.getMines() == mBoard.getRows() * mBoard.getColumns()) {
+            if (mBoard.getUnCells() == mBoard.getRows() * mBoard.getColumns()) {
                 mBoard.placeMines(cell);
                 mBoard.calculateAdjacentMines();
             }
@@ -101,7 +107,6 @@ void Game::OneRound() {
             mBoard.printBoard(mVictory, mGameOver);
             }
             else {
-                mBoard.decreaseUnCells();
 
                 if(mBoard.getUnCells() == mBoard.getMines()) {
 
@@ -119,9 +124,8 @@ void Game::OneRound() {
                 }
                     increaseTurns();
             }
-        } 
+        }
     }
-
 }
 
 
