@@ -11,16 +11,16 @@ private:
 	int mAdjacentMines;
 public:
 	Cell(int row, int column);
-	
+
 	int getRow();
 	int getColumn();
 
 	void placeMine();
 	bool hasMine();
-	
+
 	void toggleFlag();
 	bool hasFlag();
-		
+
 	void reveal();
 	bool isRevelead();
 
