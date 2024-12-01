@@ -98,7 +98,7 @@ void Board::calculateAdjacentMines() { // Perdóname Dios por este bucle
 void Board::revealCell(int row, int column) {
     Cell& cell = MainBoard[row][column];
 
-    if (!cell.isRevelead() && !cell.hasFlag()) {
+    if (!cell.isRevelead()) {
         cell.reveal();
 
         // Revelar celdas adyacentes si no hay minas alrededor

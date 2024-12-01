@@ -17,12 +17,12 @@ int main() {
     cout << "| ¡Bienvenido/a al Buscaminas! |" << std::endl;
     cout << "--------------------------------" << std::endl;
 
+    // Control de selecciones
     cout << "Seleccione una opción: (Escribe el número de la opción)" << std::endl;
     cout << "1. Jugar" << std::endl;
     cout << "2. Mejores Jugadores" << std::endl;
     cout << "3. Salir" << std::endl;
 
-    // Control de selecciones
     int seleccion = 0;
     cout << "Ingresa la opción: ";
     cin >> seleccion;
