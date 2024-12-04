@@ -45,7 +45,7 @@ ___  ________ _   _  _____ _____  _    _ _____ ___________ ___________
         cout << "--------------------------------" << endl;
     }
     else if (seleccion == 2) {
-        Leaderboard LeaderboardTxT("../leaderboard.txt");
+        Leaderboard LeaderboardTxT("../data/leaderboard.txt");
         cout << "--------------------------------" << endl;
         LeaderboardTxT.displayLeaderboard();
     }
